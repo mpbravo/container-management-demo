@@ -1,3 +1,4 @@
 * xref:index.adoc[]
 ** xref:Using Operators - Crunchy PostgreSQL.adoc[]
 ** xref:Using Helm Charts - SQL Server.adoc[]
+** xref:Deploying existing applications - Online Boutique.adoc[]
