@@ -152,7 +152,125 @@
 </aside>
 <article class="doc">
 <h1 class="page">Using Helm Charts - SQL Server</h1>
+<div class="paragraph">
+<p>Operators and Helm are not mutually exclusive; in a mature OpenShift environment, they often function as a layered stack. While Helm is the best tool for "Day 1" (packaging and templating), Operators are the masters of "Day 2" (ongoing state management).</p>
+</div>
+<div class="paragraph">
+<p>In many organizations, the choice depends on the nature of the workload:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Use Helm for Stateless Apps</strong>: For simple web frontends or APIs where "Day 2" is just "restart if it crashes," Helm is more than enough. It provides versioning, easy rollbacks, and environment-specific variable injection.</p>
+</li>
+<li>
+<p><strong>Use Operators for Stateful Apps</strong>: For databases (Postgres, MongoDB) or complex middleware (Kafka/Confluent), an Operator is essential. It understands the application&#8217;s internal state—knowing, for instance, that it shouldn&#8217;t reboot a database node while a backup is in progress.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This is just an example of a Helm chart for SQL Server for illustration purposes. It is based on Microsoft official documentation to deploy SQL Server container clusters.</p>
+</div>
+<div class="paragraph">
+<p>First, create a new project to deploy SQL Server. Go to <code>Home</code> &#8594; <code>Projects</code> and create a new project.</p>
+</div>
+<div class="paragraph">
+<p>Go to <code>Helm</code> &#8594; <code>Repositories</code> and click on <code>Create Helm Repository</code>    .</p>
+</div>
+<div class="paragraph">
+<p>Fill out the following data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Scope Type: <code>Cluster scoped</code></p>
+</li>
+<li>
+<p>Name: <code>sqlserver-helm-charts</code></p>
+</li>
+<li>
+<p>URL: <a href="https://mpbravo.github.io/helm-charts/" class="bare">https://mpbravo.github.io/helm-charts/</a></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/create-helm-repository.png" alt="Create Helm Repository" width="1000" height="1000">
+</div>
+</div>
+<div class="paragraph">
+<p>Go to <code>Ecosystem</code> &#8594; <code>Software Catalog</code></p>
+</div>
+<div class="paragraph">
+<p>Filter by <code>Helm Charts</code>, and in <code>Helm Repositories</code>, select the one we have just created. The SQL Server should show up.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/helm-charts.png" alt="Software Catalog Helm Charts" width="1000" height="1000">
+</div>
+</div>
+<div class="paragraph">
+<p>Click on the SQL Server Helm Chart and click on <code>Create</code>.</p>
+</div>
+<div class="paragraph">
+<p>Expand the form and add the SA password for the new database. Then click on <code>Create</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/create-helm-release.png" alt="Create SQL Server" width="1000" height="1000">
+</div>
+</div>
+<div class="paragraph">
+<p>If everything is ok, then you will be redirected to the Topology view with the SQL Server pod running.</p>
+</div>
+<div class="paragraph">
+<p>You can connect to the SQL Server instance through node ports, using one of the nodes IP/hostname and the port showing here:</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">&gt; oc get services
+NAME               TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+mssql-deployment   LoadBalancer   172.30.38.133   &lt;pending&gt;     1433:30701/TCP   14m
+&gt; sqlcmd -S node-hostname,30701 -U sa -P redhat123. -C</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+node ports are disallowed in most customers, this is just an example to check connection to the database.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Check that the server is alive:</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">1&gt; SELECT @@VERSION;
+2&gt; GO
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Microsoft SQL Server 2022 (RTM-CU23) (KB5078297) - 16.0.4236.2 (X64)
+        Jan 22 2026 17:50:56
+        Copyright (C) 2022 Microsoft Corporation
+        Developer Edition (64-bit) on Linux (Ubuntu 22.04.5 LTS) &lt;X64&gt;
+
+(1 rows affected)</code></pre>
+</div>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="Using%20Operators%20-%20Crunchy%20PostgreSQL.html">Using Operators - Crunchy PostgreSQL</a></span>
   <span class="next"><a href="../chapter3/index.html">Chapter 3</a></span>
