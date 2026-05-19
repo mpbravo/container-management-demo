@@ -1,0 +1,12 @@
+# Container Management Demo
+
+## Introduction
+
+A **Container Management** Platform is a trusted and consistent solution to deploy and run containers, improving efficiency and scalability of containerized workloads at scale. By abstracting away the underlying infrastructure, containers make it faster and easier to deploy and run workloads. This also boosts consistency and portability, allowing software to run reliably across different environments, from data centers to edge locations. These containers include:
+
+- Independent Software Vendors (ISVs): Deliver containerized COTS workloads to their customers.
+- Containers built outside of OpenShift: Customers who built containers outside of the OpenShift application platform and need a container management platform to deploy on.
+
+> **Important:** This demo does not cover Application Platform use cases. This demo is not suitable for those interested in using an application platform to develop, build and deploy their own applications.
+
+This demo is designed to help you understand the key features and capabilities of a Container Management Platform. It is not intended to be a comprehensive guide, but rather a starting point for your own exploration and learning.

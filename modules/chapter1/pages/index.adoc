@@ -1,0 +1,5 @@
+= Chapter 1: Console Overview
+
+While the underlying API of OpenShift Container Platform is 100% Kubernetes, plain Kubernetes focuses primarily on container orchestration and requires you to manually add and integrate your own solutions for authentication, networking, security, monitoring, and log management.
+
+The *OpenShift Container Platform web console* bridges this gap by providing an out-of-the-box, highly integrated graphical user interface that manages both standard Kubernetes resources and advanced platform-level requirements.

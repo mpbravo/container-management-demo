@@ -1,0 +1,32 @@
+= Chapter 2: Deploying COTS and existing applications
+
+In OpenShift, deploying third-party software typically follows one of three paths depending on whether you need a simple installation or long-term automated management.
+
+While Operators and Helm Charts are the primary industry standards, OpenShift also supports native Templates. Here is how they differ and when to use each.
+
+== Operators (The "Smart" Way)
+
+Operators are the gold standard for complex, stateful applications (like databases or monitoring tools). An Operator is essentially a "human operator in a box"—it’s a piece of software that knows how to install, manage, and even repair another application.
+
+* *How to deploy*: Access the OperatorHub in the OpenShift console. Search for the software (e.g., MongoDB, Grafana), click Install, and then create an "Instance" of that software.
+* *Key Advantage*: It handles Day-2 operations. If a database node fails, the Operator fixes it. If you need a backup, the Operator can trigger it. It also manages its own updates seamlessly.
+* *Best For*: Databases (PostgreSQL, Redis), Messaging (Kafka), and Infrastructure tools (Service Mesh, Logging).
+
+== Helm Charts (The "Package Manager" Way)
+
+Helm is often called the "apt" or "yum" of Kubernetes. It packages all the necessary YAML files into a single versioned unit called a Chart.
+
+* *How to deploy*: 
+** *Console*: Go to the Developer Catalog, filter by Helm Charts, and select one to install via a form-based UI.
+** *CLI*: Use the command `helm install <name> <chart-repo>`.
+* *Key Advantage*: It is highly flexible and platform-agnostic. Almost every major software project provides a Helm chart. It’s excellent for templating different environments (e.g., using one chart to deploy to Dev, Test, and Prod with different values).
+* *Best For*: Stateless applications, web frontends, and community software that doesn't require complex lifecycle management.
+
+== OpenShift Templates (The "Native" Way)
+
+Templates are an OpenShift-specific way to define a set of objects that can be parameterized.
+
+* *How to deploy*: Found in the Developer Catalog under "Templates."
+* *Key Advantage*: They are native to OpenShift and very lightweight. They are perfect for internal "Golden Path" templates created by your own DevOps team for internal developers to use.
+* *Best For*: Simple, internal company standards and legacy OpenShift 3.x workflows.
+

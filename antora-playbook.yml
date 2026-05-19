@@ -1,0 +1,17 @@
+site:
+  title: Container Management Demo
+  start_page: cm-demo::index.adoc
+  url: https://mpbravo.github.io/cm-demo/
+
+content:
+  sources:
+  - url: ./
+
+asciidoc:
+  attributes:
+    page-pagination: true
+
+ui:
+  bundle:
+    url: ./ui-bundle/ui-bundle.zip
+  supplemental_files: ./supplemental-ui
