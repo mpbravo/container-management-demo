@@ -32,7 +32,7 @@ OpenShift ships with several out-of-the-box SCCs. The absolute most common ones 
 
 * `privileged`: Total control. This grants a pod absolute power over the host system. It is reserved almost exclusively for critical cluster infrastructure, system operators, or CNI plugins.
 
-Based on https://github.com/ralvares/openshift-security-framework/blob/main/labs/basic/b1.adoc 
+This work is based on https://github.com/ralvares/openshift-security-framework/blob/main/labs/basic/b1.adoc 
 
 OpenShift is famous for its strict *Security Context Constraints (SCCs)*.
 
