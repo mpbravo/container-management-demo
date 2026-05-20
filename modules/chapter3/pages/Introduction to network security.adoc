@@ -24,8 +24,9 @@ Administrators can use `AdminNetworkPolicy` (ANP) and `BaselineAdminNetworkPolic
 
     * *BaselineAdminNetworkPolicy*: This applies a sensible baseline level of network security across the cluster that only takes effect when no other network policy overrides it
 
+== Demonstration
 
-Based on https://github.com/ralvares/openshift-security-framework/blob/main/labs/basic/b4.adoc 
+This work is based on https://github.com/ralvares/openshift-security-framework/blob/main/labs/basic/b4.adoc 
 
 . Create a new project to host the demo, for instance `demo-security`
 
