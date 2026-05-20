@@ -1,3 +1,13 @@
-= Chapter 3
+= Chapter 3: Secure by default
 
-This is the home page of _Chapter 3_ in the *hello* quick course....
+This module is based on the work by Rodrigo Alvares about security. It only includes a few examples, but we recommend examining all of them. All examples are here: https://github.com/ralvares/openshift-security-framework 
+
+In a cloud-native environment, security isn't a final checklist or an afterthought—it is a continuous, automated layer built directly into the fabric of the platform. OpenShift is "secure by default," but understanding how to configure, manage, and audit these guardrails is essential for any platform engineer or architect.
+
+In this chapter, we will break down enterprise-grade cluster security into three foundational pillars:
+
+* *Security and Compliance* - In this section, we will explore Security Context Constraints (SCC)
+* *Role Based Access Control (RBAC)* - In this section, we will explore how to control access to the different resources in the cluster.
+* *Introduction to network security* - In this section, we will explore the basic mechanisms to control cluster traffic.
+
+

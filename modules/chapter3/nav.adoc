@@ -1,3 +1,4 @@
 * xref:index.adoc[]
-** xref:section1.adoc[]
-** xref:section2.adoc[]
+** xref:Security and Compliance.adoc[]
+** xref:RBAC.adoc[]
+** xref:Introduction to network security.adoc[]
